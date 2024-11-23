@@ -1,0 +1,17 @@
+{
+  "version": "4",
+  "specifiers": {
+    "jsr:@feed/feed@*": "1.1.0",
+    "jsr:@feed/feed@^1.1.0": "1.1.0"
+  },
+  "jsr": {
+    "@feed/feed@1.1.0": {
+      "integrity": "81c457f9e00d11bce9e52929155a391b8ad0f05c2ad39e3df943fd518e7d93ef"
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@feed/feed@^1.1.0"
+    ]
+  }
+}
