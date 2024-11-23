@@ -6,7 +6,7 @@
 # This workflow will install Deno then run `deno lint` and `deno test`.
 # For more information see: https://github.com/denoland/setup-deno
 
-name: Deno
+name: Build
 
 on:
   push:
@@ -16,9 +16,11 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,12 +31,30 @@ jobs:
         uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
-      # Uncomment this step to verify the use of 'deno fmt' on each commit.
+
       - name: Verify formatting
         run: deno fmt --check
-        
+
       - name: Run linter
         run: deno lint
 
-      - name: Build
-        run: deno run main.ts
+      - name: Create feed
+        run: mkdir public && deno task run public/feed.xml
+
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
+        with:
+          path: public/
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -43,7 +43,7 @@ async function fetchPayload() {
       link: `https://www.gst.gov.in/newsandupdates/read/${item.id}`,
       id: `${item.id}`,
       updated: formatDate(item.date),
-      summary: "item.title",
+      summary: item.title,
       content: {
         body: item.content,
         type: "html",
