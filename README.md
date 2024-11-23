@@ -4,7 +4,9 @@ A simple tool which converts News and updates from the Indian
 [GST portal](https://gst.gov.in) as RSS (atom) feeds which can then be used in
 various integrations (like feed readers, bots)
 
-Demo Feed url (refreshed every 6 hours): `https://kskarthik.github.io/gstfeed/feed.xml`
+Demo Feed url (refreshed every 6 hours):
+`https://kskarthik.github.io/gstfeed/feed.xml`
+
 # Installation
 
 ## Build Requirements
