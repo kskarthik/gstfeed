@@ -53,7 +53,7 @@ async function fetchPayload() {
   // export to a file
   try {
     Deno.writeTextFileSync(`${fileName}`, atomFeed.build());
-    console.error(`Saved to ${fileName}`);
+    console.log(`Saved to ${fileName}`);
   } catch (e) {
     console.error(`failed to save file: ${fileName}\n${e}`);
     Deno.exit(1);
